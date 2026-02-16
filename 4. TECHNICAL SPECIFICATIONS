@@ -1,0 +1,733 @@
+QUEENNE PLASMA ENGINE
+
+Comprehensive Technical Specifications
+
+Document ID: QPE-SPEC-001
+Version: 1.0
+Classification: Technical Reference
+Date: 2026-02-16
+Status: Final Draft
+
+---
+
+DOCUMENT CONTROL
+
+Section Description Page
+1.0 System-Level Specifications 1
+2.0 Plasma Thruster Assembly 4
+3.0 Power Generation Unit (QNI) 8
+4.0 Propellant Management System 12
+5.0 Thermal Control System 15
+6.0 Computing Complex 19
+7.0 Sensor Suite 24
+8.0 Actuator Systems 28
+9.0 Software Specifications 31
+10.0 AI Model Specifications 35
+11.0 Communication Interfaces 39
+12.0 Mechanical and Structural 42
+13.0 Electrical Power System 45
+14.0 Environmental Requirements 48
+15.0 Reliability and Redundancy 51
+16.0 Operational Modes 54
+17.0 Performance Curves 57
+18.0 Test and Validation 60
+19.0 Compliance and Standards 63
+20.0 Glossary 65
+
+---
+
+1.0 SYSTEM-LEVEL SPECIFICATIONS
+
+1.1 General System Parameters
+
+Parameter Value Units Condition
+System Classification Magnetoplasmadynamic (MPD) with helicon pre-ionization - -
+Technology Readiness Level TRL 4 (Laboratory validated) - As of 2026
+Design Lifetime 50,000 hours Full power operation
+Total Impulse 1.2 × 10⁹ N·s With 100t propellant
+Dry Mass 14,850 kg Including reactor
+Wet Mass (fully loaded) 115,000 kg With 100t propellant
+Dimensions (stowed) 5.2 × 5.2 × 8.5 m Launch configuration
+Dimensions (deployed) 12.0 × 12.0 × 15.0 m Radiators deployed
+
+1.2 Performance Envelope
+
+Parameter Min Nominal Max Units
+Electrical Power Input 100 3,000 10,000 kW
+Thrust 0.05 20 200 N
+Specific Impulse (Isp) 2,000 8,000 12,000 s
+Exhaust Velocity 19.6 78.5 117.7 km/s
+Efficiency (η) 45 75 85 %
+Propellant Flow Rate (H₂) 0.1 2.5 25 g/s
+Propellant Flow Rate (Li) 0.5 10 100 g/s
+Thrust Density 0.1 10 50 kN/m²
+Specific Power 0.2 0.5 0.8 kW/kg
+
+1.3 Operational Modes Summary
+
+Mode Power (kW) Isp (s) Thrust (N) Duration Primary Use
+Standby 10-50 - 0 Unlimited Idle, monitoring
+Low-Thrust Cruise 500-1,000 10,000-12,000 0.5-2.0 Years Interplanetary transit
+Medium-Thrust 1,000-5,000 6,000-8,000 5-20 Weeks Trajectory corrections
+High-Thrust 5,000-10,000 2,000-4,000 50-100 Days Orbit insertion, escape
+Emergency 10,000+ 1,000-2,000 100-200 Minutes Collision avoidance
+Pulse Mode Peak 12,000 3,000-5,000 150-200 Seconds Precision maneuvers
+
+---
+
+2.0 PLASMA THRUSTER ASSEMBLY (PTA)
+
+2.1 Helicon Pre-Ionizer
+
+Parameter Specification Notes
+Type Helical antenna, Nagoya Type III -
+Frequency 13.56 ± 0.01 MHz, ISM band
+RF Power 0.1 - 5.0 kW
+Impedance Matching Automatic L-type network < 1.5:1 VSWR
+Antenna Material Copper-clad stainless steel Water-cooled
+Dielectric Window Alumina (Al₂O₃) 99.5% purity
+Pre-ionization Efficiency > 95% At nominal flow
+Plasma Density (pre-ionized) 10¹⁷ - 10¹⁸ m⁻³
+Electron Temperature 5 - 15 eV
+
+2.2 Main Acceleration Chamber
+
+Parameter Specification Notes
+Chamber Geometry Cylindrical with tapered exit 5° divergence
+Inner Diameter 1,500 ± 0.5 mm
+Length 2,000 ± 1.0 mm
+Wall Material Molybdenum alloy (TZM) Ti-Zr-Mo
+Wall Thickness 15 mm
+Liner Coating Lithium 100 μm thick
+Anode Material Graphite (POCO) 4 segments
+Cathode Material Thoriated tungsten Hollow cathode
+Cathode Temperature 2,500 - 2,800 K
+Maximum Heat Flux 5 MW/m²
+Cooling Channels Integral, regenerative H₂ coolant
+
+2.3 Superconducting Magnet System
+
+Parameter Specification Notes
+Magnet Type ReBCO tape, no-insulation -
+Number of Coils 12 Independently controlled
+Coil Configuration 8 main + 4 trim -
+Peak Field 20 T
+Operating Temperature 20 K
+Critical Current 1,200 A (at 20T, 20K)
+Inductance per Coil 5 - 15 H
+Stored Energy (total) 50 MJ
+Ramp Rate 0.1 - 10 T/min
+Field Uniformity ±1% Over plasma volume
+Magnetic Nozzle Variable geometry 3-axis control
+
+2.4 Plasma Diagnostics Ports
+
+Port Type Quantity Location Purpose
+Optical Window 8 Radial ports Emission spectroscopy
+Langmuir Probe Port 16 Axial stations Plasma parameters
+Microwave Access 4 Upstream/downstream Interferometry
+Magnetic Pickup 48 Throughout B-field measurement
+Pressure Tap 12 Chamber walls Neutral pressure
+
+---
+
+3.0 POWER GENERATION UNIT (QNI)
+
+3.1 Reactor Core Specifications
+
+Parameter Specification Notes
+Reactor Type Fast spectrum, heat-pipe cooled -
+Fuel Material Uranium mononitride (UN) 95% enrichment
+Fuel Mass 1,500 kg
+Cladding TZM alloy -
+Heat Pipe Working Fluid Lithium -
+Heat Pipe Operating Temp 1,500 K
+Number of Heat Pipes 300 Independent
+Thermal Power 10 MWth
+Core Diameter 800 mm
+Core Height 900 mm
+Neutron Flux 5 × 10¹⁴ n/cm²·s
+Control Rods 12 B₄C
+Shutdown Margin > 5% Δk/k
+Reactivity Control 0.1 - 1.0 % Δk/k per rod
+
+3.2 Power Conversion System
+
+Parameter Specification Notes
+Conversion Cycle Closed Brayton He-Xe working fluid
+Turbine Inlet Temperature 1,350 K
+Turbine Outlet Temperature 800 K
+Compressor Inlet Temperature 350 K
+Pressure Ratio 2.5 -
+Mass Flow Rate 25 kg/s
+Turbine Speed 45,000 RPM
+Alternator Type Permanent magnet Rare-earth
+Electrical Output 3.0 MWe
+Conversion Efficiency 30 %
+Radiator Area 500 m²
+Radiator Temperature 400 K
+
+3.3 QNI Control and Safety
+
+Parameter Specification Notes
+Control System Digital + Analog backup -
+Neutron Detectors 12 Fission chambers
+Temperature Sensors 48 Type C thermocouples
+SCRAM Actuation Time < 100 ms
+SCRAM Insertion Depth Full Gravity + springs
+Decay Heat Removal Passive Heat pipes to radiators
+Containment Double-walled Pressure vessel
+Radiation Shielding LiH + W 10 cm each
+
+---
+
+4.0 PROPELLANT MANAGEMENT SYSTEM
+
+4.1 Hydrogen Propellant System
+
+Parameter Specification Notes
+Tank Material Al-Li alloy 2195 -
+Tank Volume 1,200 m³
+Tank Pressure 0.2 - 0.3 MPa
+Storage Temperature 20 K
+Insulation MLI + Vapor-cooled shields 50 layers
+Boil-off Rate < 0.01 %/day
+Mass Capacity 85,000 kg
+Feed Line Diameter 50 mm
+Feed Line Insulation Vacuum-jacketed -
+Pump Type Centrifugal, cryogenic 3-stage
+Pump Flow Rate 0.1 - 25 g/s
+Pump Head 1.0 MPa
+
+4.2 Lithium Propellant System
+
+Parameter Specification Notes
+Tank Material Stainless steel 316L -
+Tank Volume 15 m³
+Tank Pressure 0.1 - 0.5 MPa
+Storage Temperature 500 K
+Heater Power 5 kW
+Insulation Multilayer + heaters -
+Mass Capacity 15,000 kg
+Feed Line Diameter 25 mm
+Feed Line Heating Trace heating 500 K
+Pump Type Electromagnetic No moving parts
+Pump Flow Rate 0.5 - 100 g/s
+Pump Head 0.5 MPa
+
+4.3 Flow Control and Valves
+
+Component Quantity Specification Response Time
+Main H₂ Valve 2 Piezoelectric, 25 mm < 10 ms
+Main Li Valve 2 Pneumatic, 15 mm < 50 ms
+Injector Valves 16 Solenoid, 2 mm < 1 ms
+Mass Flow Controllers 4 Thermal type 0.1% accuracy
+Pressure Regulators 4 Dome-loaded ±1%
+Check Valves 8 Spring-loaded -
+Burst Discs 4 Rupture type 1.5× working pressure
+
+---
+
+5.0 THERMAL CONTROL SYSTEM
+
+5.1 Active Cooling Loops
+
+Loop Fluid Flow Rate Pump Power Heat Rejection
+Plasma Chamber Loop NaK 5 kg/s 2 kW 500 kW
+Power Electronics Loop FC-72 2 kg/s 1 kW 200 kW
+Reactor Heat Pipe Li Passive 0 10 MW
+Cryocooler Loop He 0.1 kg/s 10 kW 5 kW (at 20K)
+Avionics Loop Water-glycol 0.5 kg/s 0.5 kW 10 kW
+
+5.2 Radiator Systems
+
+Parameter Main Radiator Auxiliary Radiator Cryo-radiator
+Type Deployable panel Body-mounted Fixed panel
+Area 400 m² 50 m² 50 m²
+Material C-C composite Al honeycomb Al with OSR
+Coating Z93 white paint Silver Teflon OSR
+Operating Temperature 350-450 K 300-350 K 80-120 K
+Heat Rejection 2.5 MW 100 kW 5 kW
+Deployment Motor-driven Fixed Fixed
+
+5.3 Cryocooler Specifications
+
+Parameter Magnet Coolers Shield Coolers
+Type Pulse tube Stirling
+Number of Units 4 (2 redundant) 2 (1 redundant)
+Cooling Capacity 200 W @ 20K 500 W @ 80K
+Input Power 8 kW each 3 kW each
+Working Fluid Helium-4 Helium-4
+Lifetime 100,000 hours 100,000 hours
+Control Variable speed Fixed speed
+
+5.4 Thermal Sensors
+
+Sensor Type Quantity Range Accuracy
+RTD (PT100) 128 20-500 K ±0.1 K
+Thermocouple Type K 64 200-1,500 K ±1 K
+Thermocouple Type C 48 300-2,500 K ±2 K
+Fiber Bragg Grating 128 20-1,000 K ±0.5 K
+Infrared Pyrometer 16 500-3,000 K ±5 K
+Heat Flux Sensor 32 0-10 MW/m² ±2%
+
+---
+
+6.0 COMPUTING COMPLEX
+
+6.1 Photonic Processing Unit (PPU)
+
+Parameter Specification Notes
+Technology Silicon photonic MZI mesh -
+Mesh Size 256 × 256 Interferometers
+Operation Coherent optical computing -
+Clock Speed 10 GHz
+Compute Capacity 2.56 × 10¹⁵ MAC/s
+Power Consumption 12 W
+Latency < 1 ns
+Memory 1 MB
+Interface PCIe Gen5, optical 128 GB/s
+Radiation Tolerance > 100 krad
+
+6.2 Neuromorphic Processing Unit (NPU)
+
+Parameter Specification Notes
+Technology Memristor crossbar HfO₂-based
+Synapse Count 1,048,576 1024×1024
+Neuron Count 65,536 LIF model
+Synaptic Plasticity STDP, on-chip -
+Compute Capacity 10¹³ Synaptic ops/s
+Power Consumption 5 W
+Learning Type Unsupervised, online -
+Memory 16 MB
+Interface AXI4, 256-bit 12.8 GB/s
+Radiation Hardening TMR + EDAC -
+
+6.3 Quantum Processing Unit (QPU)
+
+Parameter Specification Notes
+Technology Superconducting flux qubits -
+Qubit Count 5,000+ Physical qubits
+Topology Pegasus graph D-Wave architecture
+Operating Temperature 15 mK
+Annealing Time 1 - 100 ms
+Problem Size 5,000 variables Ising model
+Power Consumption 15 kW
+Interface Ethernet 1 GbE
+Duty Cycle 1% Not continuous
+
+6.4 Classical Processors
+
+Unit Type Cores Clock Memory Use
+R52 Cluster ARM Cortex-R52 4 800 MHz 2 MB SRAM Safety-critical
+RISC-V Cluster Vector processor 8 1 GHz 8 GB DDR4 General purpose
+FPGA Kintex UltraScale+ - - 64 MB BRAM I/O, fast loops
+GPU Radiation-hardened 256 CUDA 500 MHz 4 GB GDDR6 Simulation
+
+6.5 Interconnects
+
+Bus Protocol Bandwidth Devices
+System Bus PCIe Gen5 128 GB/s CPU, PPU, NPU, FPGA
+Sensor Network SpaceWire 400 Mbps All sensors
+Actuator Network CAN-FD 5 Mbps All actuators
+Timing PTP (IEEE 1588) < 100 ns All nodes
+Optical Links 100 GbE 12.5 GB/s PPU cluster
+
+---
+
+7.0 SENSOR SUITE
+
+7.1 Plasma Diagnostics
+
+Sensor Type Quantity Range Bandwidth Accuracy
+Langmuir Probe Cylindrical, single 16 10¹⁶-10²⁰ m⁻³ 1 MHz ±5%
+Microwave Interferometer 100 GHz 2 10¹⁷-10²⁰ m⁻³ 10 MHz ±1%
+Optical Spectrometer 200-1100 nm 8 Full spectrum 100 kHz 0.1 nm
+Magnetic Pickup B-dot coil 48 0-25 T 10 MHz ±0.1%
+Ion Energy Analyzer Retarding grid 4 0-500 eV 1 MHz ±2%
+Neutral Pressure Gauge Ionization 12 10⁻⁶-10⁻² torr 1 kHz ±5%
+
+7.2 Thermal Sensors
+
+Sensor Type Quantity Range Response Accuracy
+RTD PT100 128 20-500 K 1 s ±0.1 K
+Thermocouple K Type K 64 200-1,500 K 0.1 s ±1 K
+Thermocouple C Type C 48 300-2,500 K 0.1 s ±2 K
+Fiber Bragg Optical 128 20-1,000 K 1 ms ±0.5 K
+Infrared Pyrometer 16 500-3,000 K 1 ms ±5 K
+Heat Flux Gardon 32 0-10 MW/m² 1 ms ±2%
+
+7.3 Mechanical Sensors
+
+Sensor Type Quantity Range Bandwidth Accuracy
+Accelerometer MEMS capacitive 24 ±50 g 10 kHz 0.01 g
+Strain Gauge Foil 64 ±5,000 µε 1 kHz ±1 µε
+Vibration Piezoelectric 16 0.1-10 kHz 20 kHz ±2%
+Position LVDT 32 0-100 mm 100 Hz ±0.01 mm
+Torque Strain-based 8 0-1,000 Nm 100 Hz ±0.5%
+
+7.4 Navigation Sensors
+
+Sensor Type Quantity Range Update Accuracy
+Star Tracker CMOS, wide FOV 2 Full sky 10 Hz 1 arcsec
+Sun Sensor Coarse analog 4 ±60° 100 Hz 0.1°
+IMU FOG + MEMS 3 500°/s 1 kHz 0.01°/hr
+GPS (Earth orbit) L1/L2 2 Global 10 Hz 10 m
+Laser Ranging Time-of-flight 2 0-10 km 100 Hz 1 cm
+
+---
+
+8.0 ACTUATOR SYSTEMS
+
+8.1 Magnet Power Supplies
+
+Parameter Main Magnets Trim Magnets
+Number of Units 8 4
+Output Current 0-500 A 0-100 A
+Output Voltage 0-100 V 0-50 V
+Ripple < 0.01% < 0.01%
+Bandwidth 100 kHz 100 kHz
+Efficiency 95% 92%
+Cooling Liquid Liquid
+Protection Quench detection Overcurrent
+
+8.2 RF Generator
+
+Parameter Specification Notes
+Frequency 13.56 MHz Crystal-controlled
+Power Output 0-5,000 W Continuous
+Impedance Matching Automatic L-network < 1 ms
+Harmonic Suppression > 50 dBc -
+Efficiency 85% -
+Cooling Liquid 20°C inlet
+
+8.3 Valve Actuators
+
+Type Quantity Drive Response Position Feedback
+Piezoelectric 8 High voltage < 1 ms Strain gauge
+Solenoid 24 28 VDC < 5 ms Limit switch
+Stepper Motor 16 Bipolar < 10 ms Encoder
+Pneumatic 8 He pressure < 50 ms Potentiometer
+
+8.4 Mechanical Actuators
+
+Actuator Quantity Force/Torque Speed Use
+Radiator Deployment 4 1,000 N 1°/s Deploy radiators
+Gimbal 2 5,000 Nm 10°/s Engine pointing
+Nozzle Trim 3 100 N 100°/s Magnetic nozzle
+Cryocooler Compressor 6 - Variable Cooling
+
+---
+
+9.0 SOFTWARE SPECIFICATIONS
+
+9.1 Operating System
+
+Component Specification Notes
+OS Type Real-time Linux PREEMPT_RT
+Kernel Version 6.6 LTS -
+Distribution Custom Yocto build -
+Scheduler FIFO + RR Priority-based
+Maximum Latency < 100 µs Worst case
+Watchdog Hardware + software -
+Filesystem SquashFS (RO) + tmpfs Read-only root
+
+9.2 Middleware
+
+Component Protocol Purpose
+DDS RTPS Real-time data distribution
+ROS 2 DDS-based High-level control
+CANopen CAN Actuator control
+EtherCAT Ethernet Fast I/O
+ZeroMQ TCP/IP Inter-process
+
+9.3 Software Modules
+
+Module Language Update Rate Criticality
+Plasma Control Loop C, VHDL 1 MHz SIL 3
+Thermal Control C++ 1 kHz SIL 2
+Power Management C 100 Hz SIL 3
+AI Inference Engine C++, Python Variable SIL 2
+Health Monitoring Rust 10 Hz SIL 2
+Mission Planning Python 1 Hz SIL 1
+Telemetry C++ 10 Hz SIL 1
+
+9.4 Safety-Critical Software
+
+Function Assurance Level Verification Method
+Reactor SCRAM SIL 4 Formal methods
+Overcurrent Protection SIL 3 HIL testing
+Thermal Limits SIL 3 FMEA + testing
+Plasma Instability Control SIL 2 Simulation
+Communication Integrity SIL 2 CRC, E2E
+
+---
+
+10.0 AI MODEL SPECIFICATIONS
+
+10.1 Plasma Instability Prediction
+
+Parameter Specification
+Model Type Spiking CNN + LSTM
+Input Features 48 magnetic, 16 Langmuir
+Input Window 100 µs (1,000 samples)
+Output Classes 5 instability types + none
+Accuracy 98% (simulation), 95% (target)
+Latency < 5 µs (on NPU)
+Training Data 10,000 hours simulation + 1,000 hours lab
+Update Frequency Continuous online learning
+
+10.2 Erosion Prediction
+
+Parameter Specification
+Model Type Physics-informed neural network
+Input Features Plasma params, wall temp, accumulated fluence
+Output Erosion rate map (2D) + remaining life
+Accuracy ±10% (life prediction)
+Inference Time 1 ms (on CPU)
+Training Data Sputtering simulations + experimental
+Update Frequency Daily
+
+10.3 Trajectory Optimization
+
+Parameter Specification
+Model Type Quantum annealing (Ising)
+Problem Size 5,000 variables
+Objective Minimize time + propellant
+Constraints 20+ (power, thermal, etc.)
+Solution Time 10-100 ms (on QPU)
+Accuracy Near-optimal (within 1%)
+Update Frequency Every 10 s or on event
+
+10.4 Ethical Constraint Model
+
+Parameter Specification
+Model Type Neural-symbolic (logic tensor network)
+Rules 50+ ethical principles
+Input Mission plan, location, celestial bodies
+Output Clearance + constraints
+Verification Formal proof of rule compliance
+Update Frequency Ground updates only
+
+---
+
+11.0 COMMUNICATION INTERFACES
+
+11.1 Internal Communications
+
+Bus Physical Layer Protocol Data Rate Redundancy
+Sensor Bus LVDS SpaceWire 400 Mbps Dual
+Actuator Bus CAN CANopen 1 Mbps Dual
+Time Distribution Fiber PTP < 100 ns Dual
+High-Speed Data Optical 100 GbE 100 Gbps Single
+Control Network Ethernet TSN DDS 1 Gbps Dual
+
+11.2 External Communications
+
+Link Frequency Modulation Data Rate Use
+X-Band 8.0-8.4 GHz QPSK 10 Mbps Telemetry
+Ka-Band 32 GHz 8PSK 100 Mbps Science data
+Optical 1,550 nm OOK 1 Gbps High-rate downlink
+S-Band 2.2 GHz BPSK 1 Mbps Command & control
+Emergency UHF 400 MHz FSK 1 kbps Beacon
+
+---
+
+12.0 MECHANICAL AND STRUCTURAL
+
+12.1 Primary Structure
+
+Component Material Dimensions Mass
+Thruster Frame Ti-6Al-4V 2.5 × 2.5 × 3.0 m 1,200 kg
+Reactor Support Inconel 718 1.5 × 1.5 × 2.0 m 800 kg
+Propellant Tanks (H₂) Al-Li 2195 Ø3.0 × 10 m 2,500 kg (dry)
+Propellant Tanks (Li) SS 316L Ø2.0 × 3 m 500 kg (dry)
+Radiator Panels C-C composite 5 × 20 m (deployed) 400 kg
+Avionics Bay Al 7075 1 × 1 × 1 m 200 kg
+
+12.2 Mechanical Interfaces
+
+Interface Type Load Capacity Notes
+Launch Vehicle 1,194 mm clamp band 150 kN Standard interface
+Payload Attachment 8× bolts, 24 mm 50 kN each -
+Gimbal 2-axis, motorized 50 kN 10° travel
+Harness Connectors D38999 500 pins -
+
+---
+
+13.0 ELECTRICAL POWER SYSTEM
+
+13.1 Power Distribution
+
+Voltage Use Regulation Max Current
++28 VDC Avionics, valves ±1% 500 A
++48 VDC Actuators, pumps ±5% 1,000 A
++300 VDC RF generator ±0.5% 20 A
+±150 VDC Magnet supplies ±0.1% 500 A
++5 VDC Logic, sensors ±1% 100 A
+
+13.2 Power Budget (Nominal 3 MW Operation)
+
+Subsystem Power (kW) Percentage
+Plasma Acceleration 2,400 80.0%
+Magnets 300 10.0%
+RF Ionization 50 1.7%
+Cryocoolers 30 1.0%
+Pumps and Valves 25 0.8%
+Computing 35 1.2%
+Avionics 10 0.3%
+Thermal Management 100 3.3%
+Losses 50 1.7%
+Total 3,000 100%
+
+---
+
+14.0 ENVIRONMENTAL REQUIREMENTS
+
+14.1 Launch Environment
+
+Parameter Requirement Duration
+Vibration (axial) ±10 g, 20-2000 Hz 3 min/axis
+Vibration (lateral) ±5 g, 20-2000 Hz 3 min/axis
+Shock 1,000 g, 0.1 ms 3 shocks/axis
+Acoustic 145 dB 1 min
+Acceleration 6 g Steady-state
+
+14.2 Space Environment
+
+Parameter Requirement Notes
+Temperature (operating) -40°C to +80°C Component dependent
+Temperature (survival) -100°C to +100°C Non-operating
+Radiation (total dose) 100 krad 5 years, shielding
+Radiation (SEE) < 10⁻⁵ errors/bit-day TMR + EDAC
+Vacuum < 10⁻⁶ torr -
+Micrometeoroid 99% survival probability 5 years
+EMC MIL-STD-461 -
+
+---
+
+15.0 RELIABILITY AND REDUNDANCY
+
+15.1 Reliability Targets
+
+System Reliability (5 years) Confidence
+Plasma Thruster 0.95 90%
+Reactor (QNI) 0.99 95%
+Computing Complex 0.98 90%
+Thermal Control 0.97 90%
+Propellant System 0.99 95%
+Overall System 0.90 90%
+
+15.2 Redundancy Configuration
+
+Component Redundancy Switching
+Magnet Coils 12/8 (4 spare) Individual coil control
+Cryocoolers 4/2 (2 spare) Automatic
+RF Generators 2/1 (1 spare) Automatic
+NPU 2/1 (1 spare) < 1 ms
+FPGA Triple modular Majority vote
+Sensors Quad Voting
+Valves Dual Parallel
+
+---
+
+16.0 OPERATIONAL MODES
+
+16.1 Mode Transitions
+
+From To Trigger Transition Time
+Standby Low-thrust cruise Mission plan 1 s
+Low-thrust cruise Medium-thrust Trajectory correction 10 s
+Medium-thrust High-thrust Orbit insertion 60 s
+Any Emergency Collision detection < 100 ms
+Any Safe Fault detection < 10 ms
+
+16.2 Safe Mode Configuration
+
+Subsystem State Power
+Plasma Thruster Off 0 kW
+Reactor Minimum (decay heat) 100 kW
+Computing Minimal (health only) 5 kW
+Thermal Passive only 0 kW
+Communications Beacon mode 50 W
+
+---
+
+17.0 PERFORMANCE CURVES
+
+17.1 Thrust vs. Specific Impulse
+
+Isp (s) Thrust (N) Efficiency (%) Propellant
+12,000 0.5 85 H₂
+10,000 1.0 82 H₂
+8,000 2.5 78 H₂
+6,000 10 72 H₂/Li mix
+4,000 30 65 Li
+2,000 100 50 Li
+
+17.2 Power vs. Thrust (H₂, Isp=8,000s)
+
+Power (kW) Thrust (N) Flow Rate (g/s)
+500 0.4 0.5
+1,000 0.8 1.0
+2,000 1.6 2.0
+5,000 4.0 5.0
+10,000 8.0 10.0
+
+---
+
+18.0 TEST AND VALIDATION
+
+18.1 Component Tests
+
+Component Test Type Duration Acceptance Criteria
+Plasma Thruster Lifetime test 10,000 h < 10% performance degradation
+Magnets Quench test 100 cycles No degradation
+Reactor Non-nuclear thermal 1,000 h Temperature stability
+Cryocoolers Life test 20,000 h Cooling capacity > 90%
+
+18.2 System Tests
+
+Test Facility Duration Criteria
+Thermal Vacuum TVAC chamber 7 days All functions nominal
+Vibration Shake table 3 axes No structural failure
+EMC Anechoic chamber - MIL-STD-461 compliance
+HIL Simulation Real-time simulator 30 days AI performance validated
+
+---
+
+19.0 COMPLIANCE AND STANDARDS
+
+Standard Description Compliance Level
+ECSS-E-ST-32C Space engineering structural Full
+ECSS-Q-ST-70C Materials and processes Full
+MIL-STD-461 Electromagnetic compatibility Full
+MIL-STD-810 Environmental engineering Full
+NASA-STD-8719.9 Planetary protection Full
+ITAR Export control Compliant
+
+---
+
+20.0 GLOSSARY
+
+Term Definition
+DDS Data Distribution Service
+FPGA Field-Programmable Gate Array
+Isp Specific Impulse (seconds)
+MPD Magnetoplasmadynamic
+NPU Neuromorphic Processing Unit
+PPU Photonic Processing Unit
+QNI QUEENNE Nuclear Intelligence
+QPU Quantum Processing Unit
+SCRAM Emergency reactor shutdown
+STDP Spike-Timing-Dependent Plasticity
+Triad AI Michael, Gabriel, Rafael
+TRL Technology Readiness Level
+
+---
+
+END OF TECHNICAL SPECIFICATIONS
+
+---
+
+This document contains proprietary information. Distribution limited to authorized personnel only.
